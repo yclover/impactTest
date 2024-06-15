@@ -24,8 +24,10 @@
     <div id="urlParams"></div>
 
     <script>
-        var urlParams = JSON.parse(localStorage.getItem('urlParams'));
-        document.getElementById('urlParams').innerText = JSON.stringify(urlParams, null, 2);
+        document.addEventListener('DOMContentLoaded', function() {
+            var urlParams = JSON.parse(localStorage.getItem('urlParams'));
+            document.getElementById('urlParams').innerText = JSON.stringify(urlParams, null, 2);
+        });
     </script>
     
 </body>
