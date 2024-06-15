@@ -20,14 +20,18 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
+
+    <h1>Google Tag Manager Test Page</h1>
+    
     <div id="key1"></div>
-<div id="key2"></div>
-<script>
-var key1Value = {{Key1 Value}};
-var key2Value = {{Key2 Value}};
-document.getElementById('key1').innerHTML = 'Key1: ' + key1Value;
-document.getElementById('key2').innerHTML = 'Key2: ' + key2Value;
-</script>
+    <div id="key2"></div>
+    
+    <script>
+        var key1Value = '{{Key1 Value}}';
+        var key2Value = '{{Key2 Value}}';
+        document.getElementById('key1').innerHTML = 'Key1: ' + key1Value;
+        document.getElementById('key2').innerHTML = 'Key2: ' + key2Value;
+    </script>
     
 </body>
 </html>
