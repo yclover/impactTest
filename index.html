@@ -27,11 +27,38 @@
     <div id="key2"></div>
     
     <script>
-        var key1Value = '{{key1}}';
-        var key2Value = '{{key2}}';
-        document.getElementById('key1').innerHTML = 'Key1: ' + key1Value;
-        document.getElementById('key2').innerHTML = 'Key2: ' + key2Value;
+        // Function to get URL query parameters
+        function getQueryParams() {
+            var params = {};
+            var search = window.location.search.substring(1);
+            if (search) {
+                var parts = search.split('&');
+                for (var i = 0; i < parts.length; i++) {
+                    var pair = parts[i].split('=');
+                    params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+                }
+            }
+            return params;
+        }
+
+        // Extract the query parameters
+        var queryParams = getQueryParams();
+        
+        // Push the query parameters to the Data Layer
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'urlVariables',
+            'KEY1': queryParams['key1'],
+            'KEY2': queryParams['key2']
+        });
+
+        // Use the Data Layer variables to set the content of the divs
+        window.dataLayer.push(function() {
+            var key1Value = window.dataLayer.find(function(item) { return item.KEY1; }).KEY1;
+            var key2Value = window.dataLayer.find(function(item) { return item.KEY2; }).KEY2;
+            document.getElementById('key1').innerHTML = 'Key1: ' + key1Value;
+            document.getElementById('key2').innerHTML = 'Key2: ' + key2Value;
+        });
     </script>
-    
 </body>
 </html>
