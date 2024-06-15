@@ -21,7 +21,7 @@
     <!-- End Google Tag Manager (noscript) -->
     
 
-    <h1>Google Tag Manager Test Page</h1>
+ <h1>Google Tag Manager Test Page</h1>
     
     <div id="key1"></div>
     <div id="key2"></div>
@@ -44,21 +44,9 @@
         // Extract the query parameters
         var queryParams = getQueryParams();
         
-        // Push the query parameters to the Data Layer
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-            'event': 'urlVariables',
-            'KEY1': queryParams['key1'],
-            'KEY2': queryParams['key2']
-        });
-
-        // Use the Data Layer variables to set the content of the divs
-        window.dataLayer.push(function() {
-            var key1Value = window.dataLayer.find(function(item) { return item.KEY1; }).KEY1;
-            var key2Value = window.dataLayer.find(function(item) { return item.KEY2; }).KEY2;
-            document.getElementById('key1').innerHTML = 'Key1: ' + key1Value;
-            document.getElementById('key2').innerHTML = 'Key2: ' + key2Value;
-        });
+        // Display the extracted query parameters on the page
+        document.getElementById('key1').innerHTML = 'Key1: ' + queryParams['key1'];
+        document.getElementById('key2').innerHTML = 'Key2: ' + queryParams['key2'];
     </script>
 </body>
 </html>
